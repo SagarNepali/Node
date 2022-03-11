@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Node exercises",
+  "main": "exercise1/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SagarNepali/Node.git"
+  },
+  "author": "Sagar Nepali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SagarNepali/Node/issues"
+  },
+  "homepage": "https://github.com/SagarNepali/Node#readme"
+}
