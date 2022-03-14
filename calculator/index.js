@@ -14,7 +14,7 @@ const url = require("url");
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 app.post("/math.js", function (req, res) {
