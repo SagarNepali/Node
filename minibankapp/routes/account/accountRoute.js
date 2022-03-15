@@ -3,9 +3,23 @@
 const express = require("express");
 const path = require("path");
 const accountRouter = express.Router();
+const accountDAO = require("../../dao/AccountDAO");
+const Account = require("../../model/Account");
 
-accountRouter.get("/", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "../../views", "account.html"));
+const accountsArray = accountDAO.getAccounts();
+accountRouter.get("/", (req, res) => {
+  res.render("account.pug", { accounts: accountsArray });
+});
+
+accountRouter.post("/add", (req, res, next) => {
+  accountDAO.addAccount(
+    new Account(
+      req.body.txtAccountNo,
+      req.body.txtCustomerName,
+      req.body.ddlAccountType
+    )
+  );
+  res.redirect("back");
 });
 
 module.exports = accountRouter;

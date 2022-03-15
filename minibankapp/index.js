@@ -6,6 +6,9 @@ const accountRoutes = require("./routes/account/accountRoute");
 
 const PORT = 9000;
 
+app.set("view engine", "jade");
+app.use(express.urlencoded({ extended: false }));
+
 app.use("/static", express.static(path.join(__dirname, "public")));
 app.use("/", homeRoutes);
 app.use("/account", accountRoutes);

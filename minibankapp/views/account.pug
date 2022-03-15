@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CS472 MiniBankingApp</title>
     <link rel="stylesheet" href="/static/css/styles.css" />
-    <script defer src="/static/js/minibankapp.js"></script>
+    <script defer  type="module" src="/static/js/minibankapp.js"></script>
   </head>
   <body>
     <header>
@@ -15,9 +15,7 @@
           <li>
             <a id="hyplnkAppBranding" href="/">CS472:::MiniBankingApp</a>
           </li>
-          <!-- <li>
-                    <a class="hyplnkNavItem" href="./index.html">Home</a>
-                </li> -->
+          <!--<li><a class="hyplnkNavItem" href="./index.html">Home</a></li>-->
         </ul>
       </nav>
       <div id="divHeaderRightContent">
@@ -27,23 +25,16 @@
     <div id="mainContainer">
       <main>
         <h1 id="h1BankAccountForm">Bank Account Form</h1>
-        <form id="formNewAccount">
+        <form method="post" action="/account/add" id="formNewAccount">
           <fieldset style="border: 0">
             <div class="form-row">
               <div class="form-item">
                 <label for="txtAccountNo">Account No</label>
               </div>
               <div class="form-item">
-                <input
-                  class="form-ctrl"
-                  type="text"
-                  name="txtAccountNo"
-                  id="txtAccountNo"
-                  placeholder="01-XXX-XXXX"
-                  required
-                  autofocus
-                  pattern="01-\d{3}-\d{4}"
-                />
+                input(class="form-ctrl",type="text",
+                  name="txtAccountNo",id="txtAccountNo",placeholder="01-XXX-XXXX",required,autofocus,pattern="01-\\d{3}-\\d{4}")
+                
               </div>
               <div class="form-item small-instr-text">
                 <span>Enter your unique account number.</span>
@@ -54,14 +45,13 @@
                 <label for="txtCustomerName">Customer Name</label>
               </div>
               <div class="form-item">
-                <input
-                  class="form-ctrl"
+                input(class="form-ctrl"
                   type="text"
                   name="txtCustomerName"
                   id="txtCustomerName"
                   placeholder="e.g. John B. Smith"
-                  required
-                />
+                  required)
+                
               </div>
             </div>
             <div class="form-row">
@@ -69,12 +59,11 @@
                 <label for="ddlAccountType">Type of Account</label>
               </div>
               <div class="form-item">
-                <select
-                  class="form-ctrl-sel"
+                select(class="form-ctrl-sel"
                   name="ddlAccountType"
                   id="ddlAccountType"
-                  required
-                >
+                  required)
+                
                   <option value="">[Select Type of Account]</option>
                   <option value="Checking">Checking</option>
                   <option value="Loan">Loan</option>
@@ -83,11 +72,10 @@
               </div>
             </div>
             <div class="form-row">
-              <input
-                class="btn-std-med"
+              input(class="btn-std-med"
                 type="submit"
-                value="Create New Account"
-              />
+                value="Create New Account")
+              
             </div>
           </fieldset>
         </form>
@@ -104,18 +92,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>01-980-0001</td>
-              <td>James H. Karvill</td>
-              <td>Savings</td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>01-980-0002</td>
-              <td>Anna Hernandez-Diaz</td>
-              <td>Checking</td>
-            </tr>
+          
+            for account in {accounts}
+              for acc in account
+                tr
+                  td=1
+                  td= acc.accountNo
+                  td= acc.customerName
+                  td= acc.accountType
           </tbody>
         </table>
       </main>
