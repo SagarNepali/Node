@@ -94,12 +94,14 @@
           <tbody>
           
             for account in {accounts}
-              for acc in account
-                tr
-                  td=1
-                  td= acc.accountNo
-                  td= acc.customerName
-                  td= acc.accountType
+              -let counter = 1;
+                for acc in account
+                  tr
+                    td= counter+"."
+                    td= acc.accountNo
+                    td= acc.customerName
+                    td= acc.accountType
+                    -counter++
           </tbody>
         </table>
       </main>

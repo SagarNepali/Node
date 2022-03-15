@@ -8,6 +8,7 @@ const PORT = 9000;
 
 app.set("view engine", "jade");
 app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
 
 app.use("/static", express.static(path.join(__dirname, "public")));
 app.use("/", homeRoutes);
