@@ -15,8 +15,8 @@ accountRouter.post("/add", (req, res, next) => {
   accountDAO.addAccount(
     new Account(
       req.body.txtAccountNo,
-      req.body.txtCustomerName,
-      req.body.ddlAccountType
+      req.body.ddlAccountType,
+      req.body.txtCustomerName
     )
   );
   res.redirect("back");

@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 const homeRoutes = require("./routes/home/homeRoute");
 const accountRoutes = require("./routes/account/accountRoute");
+const mongoose = require("mongoose");
 
 const PORT = 9000;
 

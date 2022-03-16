@@ -98,8 +98,11 @@
                 for acc in account
                   tr
                     td= counter+"."
+                    //- td= acc.getAccountNo()
+                    //- td= acc.getCustomerName()
+                    //- td= acc.getAccountType()
                     td= acc.accountNo
-                    td= acc.customerName
+                    td= acc.customerName 
                     td= acc.accountType
                     -counter++
           </tbody>
