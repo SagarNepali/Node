@@ -5,7 +5,6 @@ const accountDAO = (function () {
   let accounts = [];
 
   const connection = dbConnectionMngr.getConnection();
-  console.log(connection);
   const getAccounts = function () {
     accounts.push(new Account("01-111-1111", "Checking", "Anna Smith"));
     accounts.push(new Account("01-111-1112", "Savings", "Papa Jones"));

@@ -1,16 +1,17 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const dbConfig = require("./dbconfig");
+
+const config = require("config");
+const dbConfig = config.get("MiniBankingApp.dbConfig.dbName");
+
 const dbConnectionMngr = (function (dbConfig) {
   /**
    * Makes and returns a Database connection pool using the given configuration
    */
-  const getConnection = async function () {
-    await mongoose
-      .connect(
-        "mongodb+srv://nepalisagar:uzl299wBM5D57IqA@freecluster.nzmza.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-      )
+  const getConnection = function () {
+    mongoose
+      .connect(dbConfig)
       .then(() => {
         console.log("Database connected");
       })

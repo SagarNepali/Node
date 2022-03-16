@@ -1,0 +1,10 @@
+{
+  "MiniBankingApp": {
+    "dbConfig": {
+      "host": "localhost",
+      "port": 5984,
+      "dbName": "mongodb+srv://nepalisagar:uzl299wBM5D57IqA@freecluster.nzmza.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    }
+      
+  }
+}
