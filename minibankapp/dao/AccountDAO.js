@@ -1,5 +1,6 @@
 const Account = require("../model/Account");
 const dbConnectionMngr = require("../db/dbConnectionMngr");
+const mongoAccount = require("../model/mongoAccount");
 
 const accountDAO = (function () {
   let accounts = [];
@@ -10,6 +11,10 @@ const accountDAO = (function () {
     accounts.push(new Account("01-111-1112", "Savings", "Papa Jones"));
     accounts.push(new Account("01-111-1113", "Loan", "John Doe"));
     return accounts;
+
+    // const connection = await dbConnectionMngr.getConnection();
+    // console.log("-> ", connection);
+    // return accounts;
   };
 
   const addAccount = (account) => {
