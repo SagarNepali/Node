@@ -5,7 +5,7 @@ const mongoAccount = require("../model/mongoAccount");
 const accountDAO = (function () {
   let accounts = [];
 
-  const connection = dbConnectionMngr.getConnection();
+  // const connection = dbConnectionMngr.getConnection();
   const getAccounts = function () {
     accounts.push(new Account("01-111-1111", "Checking", "Anna Smith"));
     accounts.push(new Account("01-111-1112", "Savings", "Papa Jones"));

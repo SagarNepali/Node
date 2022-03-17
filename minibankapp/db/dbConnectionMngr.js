@@ -22,6 +22,6 @@ const dbConnectionMngr = (function (dbConfig) {
   return {
     getConnection: getConnection,
   };
-})(dbConfig);
+})();
 
 module.exports = dbConnectionMngr;
