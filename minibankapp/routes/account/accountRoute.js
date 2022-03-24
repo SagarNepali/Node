@@ -7,10 +7,8 @@ const accountDAO = require("../../dao/AccountDAO");
 const Account = require("../../model/Account");
 const accountController = require("../../controller/accountController");
 
-accountRouter.get("/", (req, res) => {
-  const accountsArray = accountDAO.getAccounts();
-
-  res.render("account.pug", { accounts: accountsArray });
+accountRouter.get("/", async (req, res) => {
+  res.render("account.pug", { accounts: await accountController.findAll() });
 });
 
 accountRouter.post("/add", (req, res, next) => {

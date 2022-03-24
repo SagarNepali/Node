@@ -10,7 +10,7 @@ dotenv.config({ path: "config.env" });
 
 const PORT = process.env.PORT || 9090;
 
-app.set("view engine", "jade");
+app.set("view engine", "pug");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 getConnection();

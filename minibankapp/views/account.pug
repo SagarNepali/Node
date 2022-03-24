@@ -91,16 +91,16 @@
             </tr>
           </thead>
           <tbody>
-          
-            for account in {accounts}
+            
+             for account in {accounts}
               -let counter = 1;
-              -console.log(account)
-                tr
-                  td= counter+"."
-                  td= account.accountNo
-                  td= account.customerName 
-                  td= account.accountType
-                  -counter++
+                for acc in account
+                  tr
+                    td= counter+"."
+                    td= acc.accountNo
+                    td= acc.customerName 
+                    td= acc.accountType
+                    -counter++
           </tbody>
         </table>
       </main>

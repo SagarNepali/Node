@@ -71,6 +71,11 @@ exports.find = (req, res) => {
     });
 };
 
+exports.findAll = async () => {
+  const data = await AccountModel.find();
+  return data;
+};
+
 //update an account
 exports.update = (req, res) => {};
 
