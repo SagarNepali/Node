@@ -6,13 +6,14 @@ const accountRouter = express.Router();
 const accountDAO = require("../../dao/AccountDAO");
 const Account = require("../../model/Account");
 const accountController = require("../../controller/accountController");
+const accountRestController = require("../../controller/accountRestController");
 
 accountRouter.get("/", async (req, res) => {
   res.render("account.pug", { accounts: await accountController.findAll() });
 });
 
 accountRouter.post("/add", (req, res, next) => {
-  accountDAO.addAccount(
+  accountController.create(
     new Account(
       req.body.txtAccountNo,
       req.body.ddlAccountType,
@@ -23,9 +24,9 @@ accountRouter.post("/add", (req, res, next) => {
 });
 
 //API
-accountRouter.post("/api/accounts", accountController.create);
-accountRouter.get("/api/accounts", accountController.find);
-accountRouter.put("/api/accounts/:id", accountController.update);
-accountRouter.delete("/api/accounts", accountController.delete);
+accountRouter.post("/api/accounts", accountRestController.create);
+accountRouter.get("/api/accounts", accountRestController.find);
+accountRouter.put("/api/accounts/:id", accountRestController.update);
+accountRouter.delete("/api/accounts", accountRestController.delete);
 
 module.exports = accountRouter;
