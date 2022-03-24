@@ -2,26 +2,20 @@
 
 const mongoose = require("mongoose");
 
-const config = require("config");
-const dbConfig = config.get("MiniBankingApp.dbConfig.dbName");
+/**
+ * Makes and returns a Database connection pool using the given configuration
+ */
+const getConnection = async () => {
+  try {
+    const con = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`MongoDB Connected`);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
+};
 
-const dbConnectionMngr = (function (dbConfig) {
-  /**
-   * Makes and returns a Database connection pool using the given configuration
-   */
-  const getConnection = function () {
-    mongoose
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Database connected");
-      })
-      .catch((err) => {
-        console.log("Error; ", err);
-      });
-  };
-  return {
-    getConnection: getConnection,
-  };
-})();
-
-module.exports = dbConnectionMngr;
+module.exports = getConnection;

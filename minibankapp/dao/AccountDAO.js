@@ -1,20 +1,18 @@
 const Account = require("../model/Account");
-const dbConnectionMngr = require("../db/dbConnectionMngr");
-const mongoAccount = require("../model/mongoAccount");
+const AccountModel = require("../model/mongoAccount");
 
 const accountDAO = (function () {
-  let accounts = [];
-
   // const connection = dbConnectionMngr.getConnection();
-  const getAccounts = function () {
-    accounts.push(new Account("01-111-1111", "Checking", "Anna Smith"));
-    accounts.push(new Account("01-111-1112", "Savings", "Papa Jones"));
-    accounts.push(new Account("01-111-1113", "Loan", "John Doe"));
+  const getAccounts = async () => {
+    let accounts = [];
+    await AccountModel.find()
+      .then((data) => {
+        accounts = data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     return accounts;
-
-    // const connection = await dbConnectionMngr.getConnection();
-    // console.log("-> ", connection);
-    // return accounts;
   };
 
   const addAccount = (account) => {

@@ -1,16 +1,11 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
-module.exports = (mongoose) => {
-  const Account = mongoose.model(
-    "account",
-    mongoose.Schema(
-      {
-        accountNo: String,
-        accountType: String,
-        customerName: String,
-      },
-      { timestamps: true }
-    )
-  );
-  return Account;
-};
+const schema = new mongoose.Schema({
+  accountNo: String,
+  accountType: String,
+  customerName: String,
+});
+
+const AccountModel = mongoose.model("account", schema);
+
+module.exports = AccountModel;
