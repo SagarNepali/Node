@@ -23,6 +23,24 @@ accountRouter.post("/add", (req, res, next) => {
   res.redirect("back");
 });
 
+accountRouter.get("/edit", (req, res, next) => {
+  accountController.update(req.query.id);
+  res.redirect("back");
+});
+accountRouter.get("/delete", (req, res, next) => {
+  accountController.delete(req.query.id);
+  res.redirect("back");
+});
+
+accountRouter.post("/delete", (req, res, next) => {
+  console.log(req.query.id);
+  res.redirect("back");
+});
+
+accountRouter.post("/edit", (req, res, next) => {
+  res.redirect("back");
+});
+
 //API
 accountRouter.post("/api/accounts", accountRestController.create);
 accountRouter.get("/api/accounts", accountRestController.find);

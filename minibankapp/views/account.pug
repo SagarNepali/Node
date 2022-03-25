@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CS472 MiniBankingApp</title>
     <link rel="stylesheet" href="/static/css/styles.css" />
-    <script defer  type="module" src="/static/js/minibankapp.js"></script>
+    <script defer type="module" src="/static/js/minibankapp.js"></script>
   </head>
   <body>
     <header>
@@ -88,6 +88,7 @@
               <th scope="col">Account No</th>
               <th scope="col">Customer Name</th>
               <th scope="col">Type of Account</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -100,7 +101,11 @@
                     td= acc.accountNo
                     td= acc.customerName 
                     td= acc.accountType
-                    -counter++
+                    td 
+                      div(class="btn-group")
+                        a(href="./account/edit?id="+acc.id class="button" id="edit-btn" ) Edit
+                        a(href="./account/delete?id="+acc.id class="button" id="delete-btn") Delete
+                        -counter++
           </tbody>
         </table>
       </main>
@@ -108,7 +113,7 @@
     <footer>
       <div>
         <span> CS472-WAP ::: Banking WebApp </span>
-        <span style="float: right"> O. Kalu, MIU ::: &copy; March 2022 </span>
+        <span style="float: right"> Sagar Nepali, MIU ::: &copy; March 2022 </span>
       </div>
     </footer>
   </body>

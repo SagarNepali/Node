@@ -2,8 +2,11 @@ const accountDAO = require("../dao/AccountDAO");
 const AccountModel = require("../model/mongoAccount");
 
 exports.findAll = async () => {
-  const data = await AccountModel.find();
-  return data;
+  let accs = [];
+  await accountDAO.getAccounts().then((data) => {
+    accs = data;
+  });
+  return accs;
 };
 
 exports.create = async (acc) => {
@@ -13,14 +16,13 @@ exports.create = async (acc) => {
     accountType: acc.accountType,
     customerName: acc.customerName,
   });
+  await accountDAO.saveAccount(account);
+};
 
-  //saving to db
-  account
-    .save(account)
-    .then((data) => {
-      return "200";
-    })
-    .catch((err) => {
-      res.status(500).send({ message: err.message || "Something went wroong" });
-    });
+exports.update = async (id) => {
+  await accountDAO.update(id);
+};
+
+exports.delete = async (id) => {
+  await accountDAO.delete(id);
 };
